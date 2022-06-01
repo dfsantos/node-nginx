@@ -1,7 +1,5 @@
 services: 
   app:
-    build: 
-      context: node
     image: dfsantos/fullcycle-node
     container_name: app
     entrypoint: dockerize -wait tcp://db:3306 -timeout 20s node index
@@ -16,8 +14,6 @@ services:
        - db
 
   db:
-    build:
-      context: mysql/imagem
     image: dfsantos/fullcycle-mysql
     command: --innodb-use-native-aio=0
     container_name: db
